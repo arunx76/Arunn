@@ -49,12 +49,12 @@ module.exports.run = async function({ api, event, Users }) {
     //api.changeNickname(`𝗕𝗢𝗧 ${(!global.config.BOTNAME) ? "Buddy" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
 
     let gifUrl = 'https://i.postimg.cc/SNQXkB0y/lv-0-20231018174834.gif';
-let gifPath = __dirname + '/Nayan/join/join.gif';
+let gifPath = __dirname + '/Nayan/join/r.mp4';
 
 axios.get(gifUrl, { responseType: 'arraybuffer' })
 .then(response => {
     fs.writeFileSync(gifPath, response.data);
-    return api.sendMessage("চলে এসেছি আমি পিচ্চি নয়ন তোমাদের মাঝে🤭!", event.threadID, () => api.sendMessage({ body: `${global.config.BOTNAME} CONNECTED«\n\nAssalamualaykum☘️
+    return api.sendMessage("Hello Dosto! Swagat nahi karoge humara?🤭!", event.threadID, () => api.sendMessage({ body: `${global.config.BOTNAME} SONAM IS CONNECTED«\n\n☘️
 <------------------------------>  
 BOT CONNECTED SUCCESFUL !!! 
 
@@ -64,15 +64,15 @@ APPROVAL ALLOW IN THIS GROUP!!!
 <------------------------------>
 AND FOR ANY COMPLAINTS OR CONTACT BOT OPERATOR 
 
-DEVELOPER :Mohammad Nayan 
+DEVELOPER :Arun Kumar
 
 🟣Facebook Account Link: 
 
-https://www.facebook.com/www.xnxx.com169
+https://www.facebook.com/arun.x76
 
-🔵WHATSAPP NUMBER: wa.me/+8801615298449
+🔵WHATSAPP NUMBER: me kyu batau
 
-🟢SUPPORT EMAIL: www.mdmnnm2004@gmail.com`, attachment: fs.createReadStream(gifPath)}, threadID));
+🟢INSTA: ARUNKUMAR_031`, attachment: fs.createReadStream(gifPath)}, threadID));
 })
 .catch(error => {
     console.error(error);
