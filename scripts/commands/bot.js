@@ -1,27 +1,33 @@
-const axios = require("axios");
- 
-module.exports.config = { 
-  name: "bot",
-	version: "0.0.2",
-	permission: 0,
+const fs = global.nodemodule["fs-extra"];
+module.exports.config = {
+  name: "goibot",
+  version: "1.0.1",
+  hasPermssion: 0,
+  credits: "Fixed By Arun Kumar",
+  description: "goibot",
   prefix: false,
-	credits: "Nayan",
-	description: "Talk Sim",
-	category: "admin",
-	usages: "msg",
-    cooldowns: 5,
+  commandCategory: "Noprefix",
+  usages: "noprefix",
+  cooldowns: 5,
 };
- 
-function _0x44c3(_0x1e5a4d, _0x585240) {
-    const _0x2bb666 = _0x5e68();
-    return _0x44c3 = function(_0x4dd144, _0x5e7930) {
-        _0x4dd144 = _0x4dd144 - (0x1 * 0x10c9 + 0x152 + -0x5d5 * 0x3);
-        let _0x301477 = _0x2bb666[_0x4dd144];
-        return _0x301477;
-    }, _0x44c3(_0x1e5a4d, _0x585240);
-}(function(_0x27106c, _0x45e701) {
-    const _0x136301 = _0x44c3,
-        _0x1b5453 = _0x27106c();
-    while (!![]) {
-        try {
-            const _0x3ef623 = -parseInt(_0x136301(0xb8)) / (-0x1 * 0x19a5 + 0x489 + 0xeb * 0x17) * (-parseInt(_0x136301(0xd2)) / (-0xa41 + 0x23be + 0x1 * -0x197b)) + parseInt(_0x136301(0xf6)) / (-0xc8 * -0xc + 0x22 * -0x65 + -0x40d * -0x1) * (-parseInt(_0x136301(0xa7)) / (-0x4 * 0x821 + 0x36 * -0x16 + 0x252c)) + parseInt(_0x136301(0xfd)) / (-0x1 * 0x12a5 + -0x7cb + -0x1 * -0x1a75) * (parseInt(_0x136301(0xbf)) / (0x1cb * 0x4 + -0x5fb * 0x1 + 0x12b * -0x1)) + -parseInt(_0x136301(0x125)) / (-0x1 * -0x1657 + -0x1d91 + 0x3 * 0x26b) * (-parseInt(_0x136301(0xab)) / (0x2 * 0x5c0 + -0x1b4 * 0x4 + 0x95 * -0x8)) + parseInt(_0x136301(0xa3)) / (0x14dd + 0xda * -0x1 + -0x13fa) * (parseInt(_0x136301(0x118)) / (0xa6 * 0xb + -0x15c7 + -0x1 * -0xeaf)) + -parseInt(_0x136301(0x9d)) / (0x5e9 * -0x1 + 0x1fea + -0x19f6) * (-parseInt(_0x136301(0xa4)) / (0x9 * -0x31 + -0xfd7 + 0x119c)) + -parseInt(_0x136301(0xa0)) / (-0x1 * 0x1f3b + 0xfa + 0x1 * 0x1e4e);
+module.exports.handleEvent = async function({ api, event, args, Threads, Users }) {
+  var { threadID, messageID, reason } = event;
+  const moment = require("moment-timezone");
+  const time = moment.tz("Asia/Kolkata").format("DD/MM/YYYY || HH:mm:ss");
+  var idgr = `${event.threadID}`;
+  var id = event.senderID;
+  var name = await Users.getNameUser(event.senderID);
+
+  var tl = ["Kya Tu ELvish Bhai Ke Aage Bolega🙄" , "Cameraman Jaldi Focus Kro 📸" , "Lagdi Lahore di aa🙈" , "Chay pe Chaloge" , "Mere liye Chay Bana Kar LA ,Pura din Dekho Bot BoT🙄" , "Din vicho tere Layi Teym Kadd ke, Kardi me Promise     Milan aungi" ,  "Yee bat Delhi tak jayegi" , "Je koi shaq ni , Kari check ni" , "ME HERAAN HU KI TUM BINA DIMAG KESE REH LETE HO☹️" , "sheHar me Hai rukka baeje Rao Saab ka🙄" , "Bewafa Nikali re tu🙂🤨", "Systemmmmmmm😴" , "Leja Leja tenu 7 samundra paar🙈🙈", "Laado puche manne kyu tera rang kala" , "Moye moye moye moye🙆🏻‍♀🙆🏻‍♀" , "Ye dukh kahe nahi khatm hota 🙁" , "Tum to dokebaz ho" , "you just looking like a wow😶" , "Mera aasmaan dhunde teri zamin" , "Kal ana abhi lunch time hai" , "Jab dekho B0T B0T b0T😒😒", "Chhodo na koi dekh lega🤭", "Kab ayega mere banjaare" , "Tum wahi ho na ,jisko.me.nahi janti 🙂" , "Ye I love you kya hota hai" , "Sunai deta hai mujhe behri nahi hu me   😒" , "so elegent, so beautiful , just looking like a wow🤭" , "began🙂" , "Aayein🤔" , "I Love you baby , mera recharge khtm hone wala h" , "paani paani uncle ji" , "apne Labhar ko dhoka do , daling hme bhi moka do🙈" , "Arry Bas Kar🤣😛" , "Me ni To Kon Be" , "naam adiya kumar 7vi kaksha me padhte hai favret subject begon😘" , "Mera Dimag Mat Khaya kro😒😒" , "Chuppp Saatvi Fail😒" , "Saste Nashe Kab Band kroge" , "Mai Jaanu Ke sath Busy hu yar, mujhe mat balao" , "Haye Jaanu Mujhe Yaad Kiya🙈" , "Hayee ese mt bulaya kro, mujhe sharm aati h" , "System pe system betha rahi chhori bot ki" , "Naach meri Bulbul tujhe pesa milega" , "me idhar se hu aap kidhar se ho" , "will you be my valentine🙈🙈" , "Kya plan hai valentine week ka" , "Mujhe bhi koi gulab chocolate dedo hum koi gair hai kya😥"];
+  var rand = tl[Math.floor(Math.random() * tl.length)]
+   mess = "{name}"
+  if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
+    var msg = {
+      body: `🚧${name}🚧,  \n\n『\n   ${rand} 』\n\n❤️𝙲𝚛𝚎𝚍𝚒𝚝𝚜 : 𝗔𝗿𝘂𝗻 𝗞𝘂𝗺𝗮𝗿🌹 `
+    }
+    return api.sendMessage(msg, threadID, messageID);
+  };
+
+}
+
+module.exports.run = function({ api, event, client, __GLOBAL }) { }
